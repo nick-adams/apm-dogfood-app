@@ -5,11 +5,11 @@
 <%= render @project %>
 
 <div class="mt-8 flex flex-row">
-  <%= link_to "Edit", edit_project_path(@project), class: "inline font-semibold text-neutral-600 hover:text-neutral-500 mr-4" %>
+  <%= link_to "Edit", edit_project_path(@project), class: "inline font-semibold text-blue-500 hover:text-blue-400 mr-4" %>
   <%= button_to "Delete", @project, method: :delete, class: "inline font-semibold text-red-500 hover:text-red-400" %>
 </div>
 
-<h2 class="text-md font-semibold py-2 mt-8 border-t-2">Outstanding Tasks</h2>
+<h2 class="text-md font-semibold py-2 mt-8 border-t-2">Outstanding Tasks <span class="text-neutral-300 font-medium"> <%= @project.tasks.count %></span></h2>
 <% if @project.tasks.exists? %>
   <div class="bg-neutral-50 p-2 my-3 align-bottom rounded hover:bg-blue-50">
     <% @project.tasks.each do |task| %>
