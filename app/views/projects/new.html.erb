@@ -1,9 +1,7 @@
-<h1>New project</h1>
+<%=h link_to "&larr; All Projects".html_safe, projects_path, class: "font-semibold text-blue-500 hover:text-blue-400 my-4" %>
+
+<h1 class="text-3xl font-extrabold">Create a New Project</h1>
 
 <%= render "form", project: @project %>
 
 <br>
-
-<div>
-  <%= link_to "Back to projects", projects_path %>
-</div>

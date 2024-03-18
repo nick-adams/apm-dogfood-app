@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="my-8">
+    <%= form.label :name, class: "inline-block font-semibold mb-2" %>
+    <%= form.text_field :name, class: "rounded border-neutral-300 w-full" %>
+  </div>
+
+  <div class="my-8">
+    <%= form.label :description, class: "inline-block font-semibold mb-2" %>
+    <%= form.text_area :description, class: "rounded border-neutral-300 w-full" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class:"bg-blue-500 rounded px-3 text-white py-1 mt-4 hover:bg-blue-400" %>
   </div>
 <% end %>

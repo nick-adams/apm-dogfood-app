@@ -1,40 +1,40 @@
 <p style="color: green"><%= notice %></p>
 
-<%=h link_to "&larr; Back to projects".html_safe, projects_path %>
-
+<%=h link_to "&larr; All Projects".html_safe, projects_path, class: "font-semibold text-blue-500 hover:text-blue-400 my-4" %>
 
 <%= render @project %>
 
-<div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-
-  <%= button_to "Destroy this project", @project, method: :delete %>
+<div class="mt-8 flex flex-row">
+  <%= link_to "Edit", edit_project_path(@project), class: "inline font-semibold text-neutral-600 hover:text-neutral-500 mr-4" %>
+  <%= button_to "Delete", @project, method: :delete, class: "inline font-semibold text-red-500 hover:text-red-400" %>
 </div>
 
-<h2>Tasks</h2>
-<% @project.tasks.each do |task| %>
-  <p>
-    <strong>Task:</strong>
-    <%= task.name %>
-  </p>
-
-  <p>
-    <strong>Due:</strong>
-    <%= task.due %>
-  </p>
+<h2 class="text-md font-semibold py-2 mt-8 border-t-2">Outstanding Tasks</h2>
+<% if @project.tasks.exists? %>
+  <div class="bg-neutral-50 p-2 my-3 align-bottom rounded hover:bg-blue-50">
+    <% @project.tasks.each do |task| %>
+      <input type="checkbox">
+      <span class="inline-block align-middle mx-2"><%= task.due %></span>
+      <h3 class="inline-block align-middle font-semibold"><%= task.name %></h3>
+    <% end %>
+  </div>
+<% else %>
+  <p class="align-center text-neutral-400 mt-4">No Outstanding Tasks</p>
 <% end %>
 
-<h2>Add a task:</h2>
-<%= form_with model: [ @project, @project.tasks.build ] do |form| %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.label :due %><br>
-    <%= form.date_field :due %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<div class="border p-4 pb-0 mt-8 rounded">
+<h2 class="text-md font-semibold border-b mb-8 pb-2">Add a Task</h2>
+  <%= form_with model: [ @project, @project.tasks.build ] do |form| %>
+    <div class="mb-4">
+      <%= form.label :name, class:"w-16 inline-block" %>
+      <%= form.text_field :name, class: "rounded border-neutral-300" %>
+    </div>
+    <div class="mb-0">
+      <%= form.label :due, class:"w-16 inline-block" %>
+      <%= form.date_field :due, class: "rounded border-neutral-300" %>
+    </div>
+    <div class="pb-4 border-t mt-8">
+      <%= form.submit class:"bg-blue-500 rounded px-3 text-white py-1 mt-4 hover:bg-blue-400" %>
+    </div>
+  <% end %>
+</div>
