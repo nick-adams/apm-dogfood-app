@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="text-3xl font-extrabold">Projects</h1>
+
+<%= button_to "Create Project", new_project_path, :method => :get, class: "font-semibold text-blue-500 hover:text-blue-400 my-4"%>
+
+
+<div id="projects flex flex-row">
+  <% if @projects %>
+    <% @projects.each do |project| %>
+      <div class="shadow rounded border border-solid border-neutral-200 p-4 my-6 hover:bg-neutral-50 w-fit min-w-64 flex-none">
+        <%= render project %>
+        <p>
+          <%= button_to "View Project", project, :method => :get, class: "text-sm font-semibold mt-3 block text-blue-500 hover:text-blue-400" %>
+        </p>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="font-lg"> No Projects </p>
+  <% end %>
+</div>
+

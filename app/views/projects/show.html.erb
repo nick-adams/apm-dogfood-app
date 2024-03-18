@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+
+<%=h link_to "&larr; Back to projects".html_safe, projects_path %>
+
+
+<%= render @project %>
+
+<div>
+  <%= link_to "Edit this project", edit_project_path(@project) %> |
+
+  <%= button_to "Destroy this project", @project, method: :delete %>
+</div>
+
+<h2>Tasks</h2>
+<% @project.tasks.each do |task| %>
+  <p>
+    <strong>Task:</strong>
+    <%= task.name %>
+  </p>
+
+  <p>
+    <strong>Due:</strong>
+    <%= task.due %>
+  </p>
+<% end %>
+
+<h2>Add a task:</h2>
+<%= form_with model: [ @project, @project.tasks.build ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :due %><br>
+    <%= form.date_field :due %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
