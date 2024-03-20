@@ -1,4 +1,4 @@
 Datadog.configure do |c|
-  c.env = 'local'
+  c.env = 'localdev'
   c.service = 'apm-test-app'
 end

@@ -2,8 +2,10 @@
   <h2 class="text-2xl font-bold mb-2">
     <%= project.name %>
   </h2>
-
   <p class="text-neutral-500">
     <%= project.description %>
+  </p>
+  <p class="text-neutral-500 my-4 text-sm text align-bottom"> 
+    Tasks: <%= project.tasks.count %>
   </p>
 </div>
